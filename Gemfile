@@ -60,4 +60,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-rails"      # RSpec for testing
+  gem "factory_bot_rails" # FactoryBot for test data
 end
