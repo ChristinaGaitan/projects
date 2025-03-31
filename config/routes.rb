@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :projects do
+  resources :projects, param: :slug do
     resources :tasks
   end
   # get "home/index"

@@ -8,6 +8,10 @@ class Project < ApplicationRecord
     tasks.group_by(&:completed).transform_values(&:count)
   end
 
+  def to_param
+    slug
+  end
+
   private
   def set_slug
     self.slug = name.parameterize

@@ -56,6 +56,8 @@ class TasksController < ApplicationController
     end
 
     def set_project
-      @project = Project.find(params[:project_id])
+      @project = Project.find_by!(slug: params[:id]) # Looks up by slug instead of ID
+    rescue ActiveRecord::RecordNotFound
+      redirect_to projects_path, alert: "Project not found"
     end
 end

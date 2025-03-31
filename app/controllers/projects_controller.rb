@@ -60,7 +60,9 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params.expect(:id))
+      @project = Project.find_by!(slug: params[:slug])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to projects_path, alert: "Project not found"
     end
 
     # Only allow a list of trusted parameters through.
