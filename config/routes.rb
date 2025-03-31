@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :projects
+  resources :projects do
+    resources :tasks, only: [ :index, :create, :update, :destroy ]
+  end
   # get "home/index"
   root "home#index"
   resources :users
