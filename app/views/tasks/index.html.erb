@@ -1,2 +1,20 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tasks"%>
+
+<h1>Tasks for project <%= @project.name %></h1>
+
+<h2>Tasks</h2>
+
+<div>
+  <ol>
+    <% @tasks.each do |task| %>
+    <%= render task %>
+    <li>
+      <%= link_to "Show this task", project_task_path(@project, task)%>
+    </li>
+    <% end %>
+  </ol>
+</div>
+
+<%= link_to "New task", new_project_task_path %>

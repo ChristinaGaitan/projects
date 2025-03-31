@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :projects do
-    resources :tasks, only: [ :index, :create, :update, :destroy ]
+    resources :tasks
   end
   # get "home/index"
   root "home#index"
