@@ -5,12 +5,46 @@
 <h1>Users</h1>
 
 <div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Projects</th>
+      <th></th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.first_name %>
+      </td>
+      <td>
+        <%= user.last_name %>
+      </td>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <% user.projects.each do |project| %>
+        <% tasks_count = project.tasks_count_by_status %>
+        <p>
+          <%= link_to project.name, project %>
+
+        </p>
+        <p> Completed tasks: <%= tasks_count[true] || 0 %></p>
+        <p> Pending tasks: <%= tasks_count[false] || 0 %></p>
+        <% end %>
+      </td>
+      <td>
+        <p>
+          <%= link_to "Show this user", user %>
+        </p>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
 </div>
 
 <%= link_to "New user", new_user_path %>
+<%= link_to "New project", new_project_path %>
