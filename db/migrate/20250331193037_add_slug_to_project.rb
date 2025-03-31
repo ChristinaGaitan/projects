@@ -1,0 +1,5 @@
+class AddSlugToProject < ActiveRecord::Migration[8.0]
+  def change
+    add_column :projects, :slug, :string
+  end
+end
